@@ -19,28 +19,59 @@ This repository is for the IEEE T-PAMI 2022 paper "SuperFast: 200× Video Frame 
 
 ## Data preparing
 
-1. Download our $\text{THU}^\text{HSEVI}$ dataset from: 
-2. Download the HS-ERGB dataset from https://github.com/uzh-rpg/rpg_timelens.
-3. Change the corresponding data path in each .py file
+1. Download our $\text{THU}^\text{HSEVI}$ dataset from https://pan.baidu.com/s/13GVxDUc_81_DedRnIHIFSA (extract code: 69g5) or from https://drive.google.com/file/d/1im7Idfx7VP8c1krIdyS7zeiKTmgsU6qR/view?usp=sharing. 
+2. Change the absolute path in the files "train.txt", "train1.txt", "test.txt", and "test1.txt". The files "train.txt" and "test.txt" are the common split of our dataset, and the files "train1.txt" and "test1.txt" are the split of our dataset according to the scenario (Tab. 7).
+3. Download the HS-ERGB dataset from: https://github.com/uzh-rpg/rpg_timelens.
+4. Download the pre-trained model on both our $\text{THU}^\text{HSEVI}$ dataset and HS-ERGB dataset from https://pan.baidu.com/s/1pzyXBRR3BIohaNvaUGbSCQ (extract code: 3rrf) or from https://drive.google.com/drive/folders/1-EqPqIQ9MyEz4Nj43jSkNfcdxikhRc1w?usp=sharing.
 
 
 
-## Train and test
 
-### Testing
+## Testing
 
-After training, run the following code to generating results. **NOTICE: the default output path is (./dataset/N-MNIST/ResConv/HRPre)**.
+### Test on $\text{THU}^\text{HSEVI}$ dataset
 
-```shell
->>> python testNmnist.py
-```
+Change the variables "**ckpt_path**" and "**data_path**" in the file "**test_THU_HSEVI.py**" accordingly. For the common split of our $\text{THU}^\text{HSEVI}$ dataset, change the variable "**split_by_scenario**" to **False**. For the scenario-based split, change the variable "**split_by_scenario**" to **True**. 
 
-
-
-### Calculate metrics
-
-After generating results, run calRMSE.py to calculate the metrics. **NOTICE: the output path should be changed**.
+Run the following code to generate output results.
 
 ```shell
->>> python calRMSE.py
+>>> python test_THU_HSEVI.py
 ```
+
+**NOTE: Default output paths are "./ckpt/THU-HSEVI" for the common split, "./ckpt/THU-HSEVI1" for the scenario-based split.**
+
+Then, run the following code to calculate performance metrics. Don't forget to change the variables "**outputPath**" and "**datasetPath**" correspondingly. 
+
+```shell
+>>> python caiMetirc_THU_HSEVI.py
+```
+
+The metrics will be written in the file "**res.txt**" in "**outputPath**".
+
+
+
+### Test on HS-ERGB dataset
+
+We test the performance of our proposed method on HS-ERGB dataset while interpolate 7 or 30 frames. Change the variables "**ckpt_path**" and "**data_path**" in the file "**test_HSERGB.py**" accordingly. Then, change the variables "**subset='close' or 'far'**" and "**number_of_frames_to_skip=7 or 30**".
+
+Run the following code to generate output results.
+
+```shell
+>>> python test_HSERGB.py
+```
+
+**NOTE: Default output paths are "./ckpt/HSERGB_x7" and "./ckpt/HSERGB_x30".**
+
+Then, run the following code to calculate performance metrics. Don't forget to change the variables "**outputPath**" and "**datasetPath**" correspondingly, and choose the "**subset**" from "close" and "far". 
+
+```shell
+>>> python caiMetirc_HSERGB.py
+```
+
+The metrics will be written in the file "**res.txt**" in "**outputPath**".
+
+
+
+## Citation
+

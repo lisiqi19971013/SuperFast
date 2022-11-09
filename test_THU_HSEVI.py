@@ -99,10 +99,15 @@ def saveImg(img, path):
 
 if __name__ == '__main__':
     import os
-    os.environ["CUDA_VISIBLE_DEVICES"] = '3'
+    os.environ['CUDA_VISIBLE_DEVICES'] = '1'
     import torch
     from torch import nn
     from model import Metric
+
+    split_by_scenario = False
+
+    ckpt_path = './ckpt/ckpt_THU_HSEVI.pth' if not split_by_scenario else './ckpt/ckpt_THU_HSEVI1.pth'
+    data_path = './dataset/THU-HSEVI'
 
     device = 'cuda'
     input_img_channel = 1
@@ -115,16 +120,19 @@ if __name__ == '__main__':
     tauRho = [1, 1, 10]
     scaleRho = [1, 1, 10]
 
-    ckpt_path = './ckpt/ckpt_THU_HSEVI.pth'
     run_dir = os.path.split(ckpt_path)[0]
     print('rundir:', run_dir)
 
     torch.backends.cudnn.benchmark = True
     torch.backends.cudnn.fastest = True
-    with open('./dataset/THU-HSEVI/test.txt', 'r') as f:
-        lines = f.readlines()
+    if not split_by_scenario:
+        with open(os.path.join(data_path, 'test.txt'), 'r') as f:
+            lines = f.readlines()
+    else:
+        with open(os.path.join(data_path, 'test1.txt'), 'r') as f:
+            lines = f.readlines()
 
-    op_dir = os.path.join(run_dir, 'HSEVI')
+    op_dir = os.path.join(run_dir, 'THU-HSEVI') if not split_by_scenario else os.path.join(run_dir, 'THU-HSEVI1')
     os.makedirs(op_dir, exist_ok=True)
     with open(os.path.join(op_dir, 'ckpt.txt'), 'w') as f:
         f.writelines(ckpt_path+'\n')

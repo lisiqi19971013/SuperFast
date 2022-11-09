@@ -8,11 +8,11 @@ from PIL import Image
 
 
 class HSERGBDataset:
-    def __init__(self, subset='close', mode='train', folder='', number_of_frames_to_skip=15, nb_of_time_bin=20):
+    def __init__(self, data_path='/home/lisiqi/data/HSERGB', subset='close', mode='train', folder='', number_of_frames_to_skip=15, nb_of_time_bin=20):
         if mode not in ['train', 'test']:
             raise ValueError
 
-        self.folder = os.path.join('/home/lisiqi/data/HSERGB', subset, mode, folder)
+        self.folder = os.path.join(data_path, subset, mode, folder)
         self.number_of_frames_to_skip = number_of_frames_to_skip
         print('skip %d frame' % self.number_of_frames_to_skip)
         self.mode = mode
@@ -108,7 +108,7 @@ def saveImg(img, path):
 
 if __name__ == '__main__':
     import os
-    os.environ["CUDA_VISIBLE_DEVICES"] = '4'
+    os.environ["CUDA_VISIBLE_DEVICES"] = '7'
     import numpy as np
     import torch
     from torch import nn
@@ -116,6 +116,8 @@ if __name__ == '__main__':
 
     subset = 'close'  # 'far'
     number_of_frames_to_skip = 7  # 30
+    ckpt_path = f'./ckpt/ckpt_HSERGB_{subset}_x{number_of_frames_to_skip}.pth'
+    data_path = '/home/lisiqi/data/HSERGB'
 
     assert subset in ['close', 'far']
     assert number_of_frames_to_skip in [7, 30]
@@ -139,7 +141,7 @@ if __name__ == '__main__':
     tauRho = [1, 1, 10]
     scaleRho = [1, 1, 10]
 
-    ckpt_path = f'./ckpt/ckpt_HSERGB_{subset}_x{number_of_frames_to_skip}.pth'
+
 
     run_dir = os.path.split(ckpt_path)[0]
     print('rundir:', run_dir)
@@ -153,7 +155,7 @@ if __name__ == '__main__':
     torch.backends.cudnn.benchmark = False
     torch.backends.cudnn.fastest = True
 
-    testFolder = [HSERGBDataset(subset, 'test', k, number_of_frames_to_skip, nb_of_time_bin) for k in testList]
+    testFolder = [HSERGBDataset(data_path, subset, 'test', k, number_of_frames_to_skip, nb_of_time_bin) for k in testList]
     testLoader = [torch.utils.data.DataLoader(testFolder[k], batch_size=1, shuffle=False, pin_memory=False, num_workers=1) for k in range(len(testFolder))]
     total = sum([len(testLoader[k]) for k in range(len(testLoader))])
     model = FusionModel(netParams, hidden_number=32, theta=theta, tauSr=tauSr, tauRef=tauRef, scaleRef=scaleRef,

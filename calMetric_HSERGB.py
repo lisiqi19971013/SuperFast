@@ -16,9 +16,10 @@ def calssim(gt, pred):
     return structural_similarity(gt, pred, multichannel=True, gaussian_weights=True)
 
 
-opFolder = '/home/lisiqi/code/UHSVIE/HSERGB/log2/FusionModel/close/output_check/'
+outputPath = './ckpt/HSERGB_x30'
+datasetPath = '/home/lisiqi/data/HSERGB_CVPR_FULL'
 
-subset = 'far' # 'close'
+subset = 'close' # 'far'
 
 if subset == 'close':
     testList = ['confetti', 'fountain_bellevue2', 'water_bomb_eth_01', 'water_bomb_floor_01', 'spinning_plate',
@@ -26,19 +27,19 @@ if subset == 'close':
 else:
     testList = ['lake_01', 'bridge_lake_03', 'bridge_lake_01', 'lake_03', 'sihl_03', 'kornhausbruecke_letten_random_04']
 
-f = open(os.path.join(opFolder, subset, 'res.txt'), 'w')
+f = open(os.path.join(outputPath, subset, 'res.txt'), 'w')
 psnrList = []
 ssimList = []
 
 for c in testList:
-    folder = os.path.join(opFolder, subset, c, 'test')
+    folder = os.path.join(outputPath, subset, c, 'test')
     imgList = os.listdir(folder)
     imgList.sort()
     psnr = []
     ssim = []
     for i in imgList:
         op = cv2.imread(os.path.join(folder, i))
-        gt = cv2.imread(os.path.join('/home/lisiqi/data/HSERGB_CVPR_FULL', subset, 'test', c, 'images_corrected', i))
+        gt = cv2.imread(os.path.join(datasetPath, subset, 'test', c, 'images_corrected', i))
         p = calpsnr(gt, op)
         s = calssim(gt, op)
         psnr.append(p)
