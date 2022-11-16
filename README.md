@@ -1,5 +1,5 @@
 # SuperFast: 200× Video Frame Interpolation via Event Camera
-This repository is for the IEEE T-PAMI 2022 paper "SuperFast: 200× Video Frame Interpolation via Event Camera"
+This repository is for the *IEEE T-PAMI* *2022* paper **"SuperFast: 200× Video Frame Interpolation via Event Camera"**. Please cite and star our work if our code or dataset is used.
 
 ## Requirements
 
@@ -41,13 +41,23 @@ Run the following code to generate output results.
 
 **NOTE: Default output paths are "./ckpt/THU-HSEVI" for the common split, "./ckpt/THU-HSEVI1" for the scenario-based split.**
 
+
+
 Then, run the following code to calculate performance metrics. Don't forget to change the variables "**outputPath**" and "**datasetPath**" correspondingly. 
 
 ```shell
->>> python caiMetirc_THU_HSEVI.py
+>>> python calMetirc_THU_HSEVI.py
 ```
 
 The metrics will be written in the file "**res.txt**" in "**outputPath**".
+
+
+
+As for the temporal error, download the optical flow from: , and place it in the folder "**./optical_flow**". Then, change the variables "**outputPath**" and "**datasetPath**" correspondingly. Run the following code to calculate the temporal error.
+
+```shell
+>>> python calTmpLoss.py
+```
 
 
 
@@ -66,7 +76,7 @@ Run the following code to generate output results.
 Then, run the following code to calculate performance metrics. Don't forget to change the variables "**outputPath**" and "**datasetPath**" correspondingly, and choose the "**subset**" from "close" and "far". 
 
 ```shell
->>> python caiMetirc_HSERGB.py
+>>> python calMetirc_HSERGB.py
 ```
 
 The metrics will be written in the file "**res.txt**" in "**outputPath**".
@@ -74,4 +84,16 @@ The metrics will be written in the file "**res.txt**" in "**outputPath**".
 
 
 ## Citation
+
+```bib
+@article{SuperFast,
+  author={Gao, Yue and Li, Siqi and Li, Yipeng and Guo, Yandong and Dai, Qionghai},
+  journal={IEEE Transactions on Pattern Analysis and Machine Intelligence}, 
+  title={{SuperFast: 200$\boldsymbol{\times}$ Video Frame Interpolation via Event Camera}}, 
+  year={2022},
+  volume={},
+  number={},
+  pages={},
+  publisher={IEEE}}
+```
 

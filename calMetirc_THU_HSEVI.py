@@ -39,7 +39,7 @@ for c in cate:
             if not os.path.exists(os.path.join(path, '%d_output.png'%k)):
                 continue
             op = cv2.imread(os.path.join(path, '%d_output.png' % k), cv2.IMREAD_GRAYSCALE)
-            gt = cv2.imread(os.path.join('./dataset/THU-HSEVI', c, folder, 'frame', '%d.jpg'%k), cv2.IMREAD_GRAYSCALE)
+            gt = cv2.imread(os.path.join(datasetPath, c, folder, 'frame', '%d.jpg'%k), cv2.IMREAD_GRAYSCALE)
 
             p = calpsnr(gt, op)
             s = calssim(gt, op)
