@@ -94,6 +94,7 @@ The metrics will be written in the file "**res.txt**" in "**outputPath**".
   volume={},
   number={},
   pages={},
-  publisher={IEEE}}
+  publisher={IEEE}
+  }
 ```
 
