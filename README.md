@@ -1,5 +1,5 @@
 # SuperFast: 200× Video Frame Interpolation via Event Camera
-This repository is for the *IEEE T-PAMI* *2022* paper **"SuperFast: 200× Video Frame Interpolation via Event Camera"**. Please cite and star our work if our code or dataset is used.
+This repository is for the **IEEE T-PAMI** **2022** paper "*SuperFast: 200× Video Frame Interpolation via Event Camera*". Please cite and star our work if our code or dataset is used.
 
 ## Requirements
 
@@ -94,6 +94,7 @@ The metrics will be written in the file "**res.txt**" in "**outputPath**".
   volume={},
   number={},
   pages={},
-  publisher={IEEE}}
+  publisher={IEEE}
+  }
 ```
 
