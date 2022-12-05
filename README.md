@@ -31,57 +31,80 @@ This repository is for the **IEEE T-PAMI** **2022** paper "*SuperFast: 200× Vid
 
 ### Test on $\text{THU}^\text{HSEVI}$ dataset
 
-Change the variables "**ckpt_path**" and "**data_path**" in the file "**test_THU_HSEVI.py**" accordingly. For the common split of our $\text{THU}^\text{HSEVI}$ dataset, change the variable "**split_by_scenario**" to **False**. For the scenario-based split, change the variable "**split_by_scenario**" to **True**. 
+1. Change the variables "**ckpt_path**" and "**data_path**" in the file "**test_THU_HSEVI.py**" accordingly. For the common split of our $\text{THU}^\text{HSEVI}$ dataset, change the variable "**split_by_scenario**" to **False**. For the scenario-based split, change the variable "**split_by_scenario**" to **True**. 
 
-Run the following code to generate output results.
+   Run the following code to generate output results.
 
-```shell
->>> python test_THU_HSEVI.py
-```
+   ```shell
+   >>> python test_THU_HSEVI.py
+   ```
 
-**NOTE: Default output paths are "./ckpt/THU-HSEVI" for the common split, "./ckpt/THU-HSEVI1" for the scenario-based split.**
+   **NOTE: Default output paths are "./ckpt/THU-HSEVI" for the common split, "./ckpt/THU-HSEVI1" for the scenario-based split.**
 
+2. Then, run the following code to calculate performance metrics. Don't forget to change the variables "**outputPath**" and "**datasetPath**" correspondingly. 
 
+   ```shell
+   >>> python calMetirc_THU_HSEVI.py
+   ```
 
-Then, run the following code to calculate performance metrics. Don't forget to change the variables "**outputPath**" and "**datasetPath**" correspondingly. 
+   The metrics will be written in the file "**res.txt**" in "**outputPath**".
 
-```shell
->>> python calMetirc_THU_HSEVI.py
-```
+3. As for the temporal error, download the optical flow from: https://pan.baidu.com/s/12W7n6OUbNYtg4JsPtAUXQg (extract code: 215c) or from: https://drive.google.com/file/d/1BlL8tJ2rxH7wjHDvjRupOIg_4U4Ghkhj/view?usp=share_link, and place it in the folder "**./optical_flow**". Then, change the variables "**outputPath**" and "**datasetPath**" correspondingly. Run the following code to calculate the temporal error.
 
-The metrics will be written in the file "**res.txt**" in "**outputPath**".
+   ```shell
+   >>> python calTmpLoss.py
+   ```
 
-
-
-As for the temporal error, download the optical flow from: https://pan.baidu.com/s/12W7n6OUbNYtg4JsPtAUXQg (extract code: 215c) or from: https://drive.google.com/file/d/1BlL8tJ2rxH7wjHDvjRupOIg_4U4Ghkhj/view?usp=share_link, and place it in the folder "**./optical_flow**". Then, change the variables "**outputPath**" and "**datasetPath**" correspondingly. Run the following code to calculate the temporal error.
-
-```shell
->>> python calTmpLoss.py
-```
 
 
 
 ### Test on HS-ERGB dataset
 
-We test the performance of our proposed method on HS-ERGB dataset while interpolate 7 or 30 frames. Change the variables "**ckpt_path**" and "**data_path**" in the file "**test_HSERGB.py**" accordingly. Then, change the variables "**subset='close' or 'far'**" and "**number_of_frames_to_skip=7 or 30**".
+We test the performance of our proposed method on HS-ERGB dataset while interpolate 7 or 30 frames. 
 
-Run the following code to generate output results.
+1. Change the variables "**ckpt_path**" and "**data_path**" in the file "**test_HSERGB.py**" accordingly. Then, change the variables "**subset='close' or 'far'**" and "**number_of_frames_to_skip=7 or 30**".
 
-```shell
->>> python test_HSERGB.py
-```
+   Run the following code to generate output results.
 
-**NOTE: Default output paths are "./ckpt/HSERGB_x7" and "./ckpt/HSERGB_x30".**
+   ```shell
+   >>> python test_HSERGB.py
+   ```
 
-Then, run the following code to calculate performance metrics. Don't forget to change the variables "**outputPath**" and "**datasetPath**" correspondingly, and choose the "**subset**" from "close" and "far". 
+   **NOTE: Default output paths are "./ckpt/HSERGB_x7" and "./ckpt/HSERGB_x30".**
 
-```shell
->>> python calMetirc_HSERGB.py
-```
+2. Then, run the following code to calculate performance metrics. Don't forget to change the variables "**outputPath**" and "**datasetPath**" correspondingly, and choose the "**subset**" from "close" and "far". 
 
-The metrics will be written in the file "**res.txt**" in "**outputPath**".
+   ```shell
+   >>> python calMetirc_HSERGB.py
+   ```
+
+   The metrics will be written in the file "**res.txt**" in "**outputPath**".
 
 
+
+## Main Compared method
+
+### Time Lens
+
+For a better comparison, we provide the pre-trained checkpoint of Time Lens on our $\text{THU}^\text{HSEVI}$ dataset.
+
+1. Download the pre-trained checkpoint of Time Lens on our $\text{THU}^\text{HSEVI}$ dataset could be downloaded from: https://pan.baidu.com/s/1lgrMcMt161JW76ti_VzxwQ (extract code: i884) or from https://drive.google.com/file/d/1djAwE0UxK5K1uh4kfkLkEBd6UcTnacw6/view?usp=sharing. Put the checkpoint file in the "./timelens/" folder. 
+
+2. Switch into the "./timelens/" folder, and run the following code to generate output results. Change the corresponding path in the file accordingly if errors are occurred.
+
+   ```shell
+   >>> python test_timelens.py
+   ```
+
+3. Then, run the following code to calculate performance metrics. Don't forget to change the variables "**outputPath**" and "**datasetPath**" correspondingly. 
+
+   ```shell
+   >>> python calMetirc_THU_HSEVI.py
+   ```
+
+   The metrics will be written in the file "**res.txt**" in "**outputPath**".
+
+   
 
 ## Citation
 

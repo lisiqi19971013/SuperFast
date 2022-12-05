@@ -17,7 +17,8 @@ core = {'cup_breaking':[600,1000], 'water_bomb':[1400,1800], 'chessboard_waving'
         'hard_disk_spining':[0,400], 'firing':[300,500]}
 
 
-outputPath = './ckpt/THU-HSEVI/'
+# outputPath = './ckpt/THU-HSEVI/'
+outputPath = './timelens/output_timelens/'
 datasetPath = './dataset/THU-HSEVI'
 
 psnrList = []
