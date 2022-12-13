@@ -109,15 +109,14 @@ For a better comparison, we provide the pre-trained checkpoint of Time Lens on o
 ## Citation
 
 ```bib
-@article{SuperFast,
+@ARTICLE{SuperFast,
   author={Gao, Yue and Li, Siqi and Li, Yipeng and Guo, Yandong and Dai, Qionghai},
   journal={IEEE Transactions on Pattern Analysis and Machine Intelligence}, 
-  title={{SuperFast: 200$\boldsymbol{\times}$ Video Frame Interpolation via Event Camera}}, 
+  title={SuperFast: 200$\boldsymbol{\times}$ Video Frame Interpolation via Event Camera}, 
   year={2022},
   volume={},
   number={},
-  pages={},
-  publisher={IEEE}
-  }
+  pages={1-17},
+  doi={10.1109/TPAMI.2022.3224051}}
 ```
 
