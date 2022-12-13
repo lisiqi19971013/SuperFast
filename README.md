@@ -49,13 +49,13 @@ This repository is for the **IEEE T-PAMI** **2022** paper "*SuperFast: 200× Vid
 
    The metrics will be written in the file "**res.txt**" in "**outputPath**".
 
+   **NOTE: The total performance on the high-speed clips on our dataset **
+
 3. As for the temporal error, download the optical flow from: https://pan.baidu.com/s/12W7n6OUbNYtg4JsPtAUXQg (extract code: 215c) or from: https://drive.google.com/file/d/1BlL8tJ2rxH7wjHDvjRupOIg_4U4Ghkhj/view?usp=share_link, and place it in the folder "**./optical_flow**". Then, change the variables "**outputPath**" and "**datasetPath**" correspondingly. Run the following code to calculate the temporal error.
 
    ```shell
    >>> python calTmpLoss.py
    ```
-
-
 
 
 ### Test on HS-ERGB dataset
