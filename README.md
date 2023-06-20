@@ -115,10 +115,10 @@ For a better comparison, we provide the pre-trained checkpoint of Time Lens on o
   author={Gao, Yue and Li, Siqi and Li, Yipeng and Guo, Yandong and Dai, Qionghai},
   journal={IEEE Transactions on Pattern Analysis and Machine Intelligence}, 
   title={SuperFast: 200$\boldsymbol{\times}$ Video Frame Interpolation via Event Camera}, 
-  year={2022},
-  volume={},
-  number={},
-  pages={1-17},
+  year={2023},
+  volume={45},
+  number={6},
+  pages={7764-7780},
   doi={10.1109/TPAMI.2022.3224051}}
 ```
 
