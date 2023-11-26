@@ -19,7 +19,7 @@ This repository is for the **IEEE T-PAMI** **2022** paper "*SuperFast: 200× Vid
 
 ## Data preparing
 
-1. Download our $\text{THU}^\text{HSEVI}$ dataset from https://pan.baidu.com/s/13GVxDUc_81_DedRnIHIFSA (extract code: 69g5) or from https://drive.google.com/file/d/1im7Idfx7VP8c1krIdyS7zeiKTmgsU6qR/view?usp=sharing. 
+1. Our $\text{THU}^\text{HSEVI}$ dataset could be downloaded from https://github.com/lisiqi19971013/event-based-datasets. 
 2. Change the absolute path in the files "train.txt", "train1.txt", "test.txt", and "test1.txt". The files "train.txt" and "test.txt" are the common split of our dataset, and the files "train1.txt" and "test1.txt" are the split of our dataset according to the scenario (Tab. 7).
 3. Download the HS-ERGB dataset from: https://github.com/uzh-rpg/rpg_timelens.
 4. Download the pre-trained model on both our $\text{THU}^\text{HSEVI}$ dataset and HS-ERGB dataset from https://pan.baidu.com/s/1pzyXBRR3BIohaNvaUGbSCQ (extract code: 3rrf) or from https://drive.google.com/drive/folders/1-EqPqIQ9MyEz4Nj43jSkNfcdxikhRc1w?usp=sharing.
